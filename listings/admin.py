@@ -16,7 +16,7 @@ class FarmhouseImageAdmin(admin.ModelAdmin):
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('id','booking_number', 'farmhouse', 'guest', 'status')
-    list_filter = ('status',)
+    # list_filter = ('status',)
     search_fields = ('booking_number', 'guest__username', 'farmhouse__name')
 
 @admin.register(Review)

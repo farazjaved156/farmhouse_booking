@@ -4,7 +4,7 @@ from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile
 @admin.register(Farmhouse)
 class FarmhouseAdmin(admin.ModelAdmin):
     list_display = ('id','name', 'city', 'owner', 'bedrooms', 'created_at','slug')
-    # list_filter = ('city', 'has_pool', 'has_wifi', 'has_air_conditioning')
+    list_filter = ('city', 'has_pool', 'has_wifi', 'has_air_conditioning')
     # search_fields = ('name', 'city', 'description')
     prepopulated_fields = {'slug': ('name', 'city')}
 

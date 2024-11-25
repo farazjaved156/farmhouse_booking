@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile
+# from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile
 
 @admin.register(Farmhouse)
 class FarmhouseAdmin(admin.ModelAdmin):
@@ -22,9 +22,9 @@ class BookingAdmin(admin.ModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('id','farmhouse', 'reviewer', 'rating', 'created_at')
-    list_filter = ('rating', 'created_at')
+    # list_filter = ('rating', 'created_at')
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('id','user', 'phone_number')
-    search_fields = ('user__username', 'phone_number')
+    # search_fields = ('user__username', 'phone_number')

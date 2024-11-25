@@ -1,5 +1,5 @@
-from django.contrib import admin
-# from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile
+# from django.contrib import admin
+from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile
 
 @admin.register(Farmhouse)
 class FarmhouseAdmin(admin.ModelAdmin):
@@ -16,7 +16,7 @@ class FarmhouseImageAdmin(admin.ModelAdmin):
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('id','booking_number', 'farmhouse', 'guest', 'status')
-    list_filter = ('status',)
+    # list_filter = ('status',)
     search_fields = ('booking_number', 'guest__username', 'farmhouse__name')
 
 @admin.register(Review)

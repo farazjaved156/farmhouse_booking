@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eden Farmhouse, Karachi Pakistan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Left Section */
+        .content-section {
+            flex: 2;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .main-image-container {
+            position: relative;
+            border-radius: 1rem 1rem 0rem 0rem;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            /* height: 400px; */
+            height: auto;
+            object-fit: cover;
+        }
+
+        .rating-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-weight: 500;
+        }
+
+        .rating-badge img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.1rem;
+            margin-top: 0rem;
+        }
+
+        .grid-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .image-grid .grid-image:first-child {
+            border-radius: 0rem 0rem 0rem 0.5rem;
+        }
+
+        .image-grid .grid-image:last-child {
+            border-radius: 0rem 0rem 0.5rem 0rem;
+        }
+
+        /* Right Section */
+        .schedule-section {
+            flex: 1;
+            background-color: #f8f7ff;
+            padding: 1rem;
+            border-radius: 1rem;
+            height: fit-content;
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .month-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .date-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            /* gap: 0.1rem 0.5rem; */
+            margin-bottom: 2rem;
+        }
+
+        .date-card {
+            /* background: white; */
+            padding: 0.55rem 0.55rem;
+            border-radius: 0.5rem;
+            border-color: rgb(0, 0, 0);
+            text-align: center;
+            cursor: pointer;
+            /* transition: all 0.2s; */
+        }
+
+        .week-names {
+            padding: 0.55rem 0.55rem;
+            border-radius: 0.5rem;
+            border-color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .date-card:hover {
+            background: #6c42f5;
+            color: white;
+            box-shadow: #1a1a1a 5px;
+        }
+
+        .date-card.active {
+            background: #6c42f5;
+            color: white;
+        }
+
+        .date-card .date {
+            font-size: 1.0rem;
+            font-weight: 500;
+        }
+
+        .date-card .month {
+            font-size: 0.74rem;
+            opacity: 0.8;
+        }
+
+        /* .month{
+            font-size: 0.175rem;
+            opacity: 0.8;
+        } */
+
+        .available-slots h3 {
+            margin-bottom: 1rem;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            /* width: 100%; */
+        }
+
+        .time-slot {
+            background: white;
+            padding: 1rem 0rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            /* border: #6c42f5 1px solid; */
+            transition: all 0.2s;
+        }
+
+        .time-slot.active {
+            background: #6c42f5;
+            color: white;
+
+        }
+
+        .price-info {
+            font-weight: bold;
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .book-button {
+            width: 100%;
+            background: #6c42f5;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .book-button:hover {
+            background: #5a35d0;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .grid-image {
+                /* grid-template-columns: repeat(2, 1fr); */
+                height: 70px;
+            }
+        }
+
+        .farmhouse-details {
+            max-width: 1400px;
+            width: 100%;
+            height: auto;
+            margin: auto;
+            margin-top: 2rem;
+            padding: 1.0rem;
+            /* Removed padding from container */
+            border: 1px solid #e5e5e5;
+            border-radius: 15px 15px 15px 15px;
+            position: relative;
+        }
+
+        .details-left {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+            /* Added padding here */
+        }
+
+        .farmhouse-name-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .farmhouse-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .heart-icon {
+            color: #6c42f5;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .farmhouse-location-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .marker-icon {
+            color: #6c42f5;
+            font-size: 1rem;
+        }
+
+        .farmhouse-location {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .farmhouse-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .details-right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 180px;
+            text-align: right;
+            padding: 2rem;
+            /* Added same padding as left side */
+            padding-right: 15rem;
+            ;
+        }
+
+        .price-label {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            white-space: nowrap;
+        }
+
+        .price-amount:not(:first-child) {
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="content-section">
+            <h1>Eden Farmhouse, Karachi Pakistan</h1>
+            <div class="main-image-container">
+                <img src="https://images.pexels.com/photos/1714976/pexels-photo-1714976.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Eden Farmhouse" class="main-image">
+                <div class="rating-badge">
+                    ⭐ 4.5
+                </div>
+            </div>
+            <div class="image-grid">
+                <img src="https://images.pexels.com/photos/635126/pexels-photo-635126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Kitchen" class="grid-image">
+                <img src="https://images.pexels.com/photos/1714976/pexels-photo-1714976.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Farmhouse Interior" class="grid-image">
+                <img src="https://images.pexels.com/photos/15796414/pexels-photo-15796414/free-photo-of-beach-restaurant-tropical-paradise-pool.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Living Area" class="grid-image">
+                <img src="https://images.pexels.com/photos/9043968/pexels-photo-9043968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Swimming Pool" class="grid-image">
+                <img src="https://images.pexels.com/photos/635126/pexels-photo-635126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="Kitchen" class="grid-image">
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="schedule-section">
+            <div class="schedule-header">
+                <h2>Schedule</h2>
+                <div class="month-selector">
+                    Aug, 2024
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="date-grid">
+                <div class="week-names">Mo</div>
+                <div class="week-names">Tu</div>
+                <div class="week-names">We</div>
+                <div class="week-names">Th</div>
+                <div class="week-names">Fr</div>
+                <div class="week-names">Sa</div>
+                <div class="week-names">Su</div>
+                <div class="">
+                    <!-- <div class=""></div> -->
+                    <!-- <div class=""></div> -->
+                </div>
+                <div class="date-card">
+                    <div class="date">1</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">2</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">3</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">4</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">5</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">6</div>
+                    <div class="month">26k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">7</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">8</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card active">
+                    <div class="date">9</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">10</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">11</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">12</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">13</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">14</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">15</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">16</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">17</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">18</div>
+                    <div class="month">25k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">19</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">20</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">22</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">23</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">24</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">25</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">26</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">27</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">28</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">29</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">30</div>
+                    <div class="month">35k</div>
+                </div>
+                <div class="date-card">
+                    <div class="date">31</div>
+                    <div class="month">35k</div>
+                </div>
+            </div>
+
+            <div class="available-slots">
+                <h3>Available Slots</h3>
+                <div class="time-slots">
+                    <div class="time-slot">11:00 AM - 11:00 PM</div>
+                    <div class="time-slot active">12:00 AM - 12:00PM</div>
+                </div>
+            </div>
+
+            <div class="price-info">
+                <span>Rs 25,500 × 1 (12 Hours)</span>
+                <span>--></span>
+                <span>Rs 24,500</span>
+            </div>
+
+            <button class="book-button">Book Now</button>
+        </div>
+
+    </div>
+    <!-- Update the farmhouse-details section -->
+    <div class="farmhouse-details">
+        <div class="details-left">
+            <div class="farmhouse-name-container">
+                <h2 class="farmhouse-name">Eden Farmhouse</h2>
+                <i class="fas fa-heart heart-icon"></i>
+            </div>
+            <div class="farmhouse-location-container">
+                <i class="fas fa-map-marker-alt marker-icon"></i>
+                <p class="farmhouse-location">Karachi, Pakistan</p>
+            </div>
+            <p class="farmhouse-description">Eden Farmhouse uses a 19th-Century wooden house built using "Kath Kuni"
+                Architecture, an indigenous construction technique. Providing a panoramic view of the Sea, amidst apple
+                orchards we're located 19km from Karachi. With 2 king-size beds & seating space, The room has wooden
+                floors & walls complimented with colorful décor. All our rooms have access to the lawn, kitchen, living
+                area & our apple orchards.</p>
+        </div>
+        <div class="details-right">
+            <p class="price-amount"><strong>Rs.25,500</strong>/12 hours</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Date selection
+            const dateCards = document.querySelectorAll('.date-card');
+            dateCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    dateCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Time slot selection
+            const timeSlots = document.querySelectorAll('.time-slot');
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', function () {
+                    timeSlots.forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Booking
+            const bookButton = document.querySelector('.book-button');
+            bookButton.addEventListener('click', function () {
+                alert('Booking confirmed!');
+            });
+        });
+    </script>
+</body>
+
+</html>

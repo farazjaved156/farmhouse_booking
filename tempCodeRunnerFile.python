@@ -1,0 +1,3 @@
+from datetime import datetime, timedelta, date
+print(datetime.now())
+print(date.today())

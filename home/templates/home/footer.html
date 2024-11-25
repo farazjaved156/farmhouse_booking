@@ -1,0 +1,160 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 2rem 1rem;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Flex layout for the footer columns */
+    .footer-column {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    /* Style each footer section */
+    .footer-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .footer-section h3 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-content {
+      list-style: none;
+    }
+
+    .footer-content li {
+      margin-bottom: 0.8rem;
+      color: #ccc;
+    }
+
+    .footer-content a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-content a:hover {
+      color: white;
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .payment-methods img {
+      width: 50px;
+      height: 30px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 4px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      text-align: center;
+      border-top: 1px solid #555;
+      color: #ccc;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .footer-column {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .footer-section {
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <!-- Services Column -->
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul class="footer-content">
+            <li><a href="#">Farmhouse Booking</a></li>
+            <li><a href="#">Resorts Booking</a></li>
+            <li><a href="#">Car Booking</a></li>
+            <li><a href="#">Room Booking</a></li>
+            <li><a href="#">Hotel Booking</a></li>
+          </ul>
+        </div>
+
+        <!-- Payment Methods Column -->
+        <div class="footer-section">
+          <h3>Payment Methods</h3>
+          <div class="payment-methods footer-content">
+            <img src="/api/placeholder/50/30" alt="Visa">
+            <img src="/api/placeholder/50/30" alt="Mastercard">
+            <img src="/api/placeholder/50/30" alt="PayPal">
+            <img src="/api/placeholder/50/30" alt="American Express">
+          </div>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <ul class="footer-content">
+            <li>Email: info@example.com</li>
+            <li>Phone: (123) 456-7890</li>
+          </ul>
+          <div class="social-icons">
+            <img src="/api/placeholder/24/24" alt="Facebook">
+            <img src="/api/placeholder/24/24" alt="Twitter">
+            <img src="/api/placeholder/24/24" alt="Instagram">
+            <img src="/api/placeholder/24/24" alt="LinkedIn">
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>          

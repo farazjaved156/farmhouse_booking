@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Full Viewport Hero Image</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .announcement-bar {
+            background: linear-gradient(90deg, #5124D2 0%, #673EE5 100%);
+            color: #fff;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        .navbar-container {
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            padding: 0 24px;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .profile-section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .profile-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .profile-btn:hover {
+            opacity: 0.8;
+        }
+
+        .profile-btn img {
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% - 8px);
+            right: 0;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            z-index: 1000;
+            padding: 8px 0;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 8px 0;
+        }
+
+        /* Hero Section Styles */
+        .hero-container {
+            width: 100%;
+            height: calc(100vh - 64px - 32px);
+            /* Default height when announcement bar is present */
+        }
+
+        /* Full viewport height if .announcement-bar is not present */
+        body:not(:has(.announcement-bar)) .hero-container {
+            height: calc(100vh - 64px);
+            /* Full viewport height without announcement bar */
+        }
+
+        .hero-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text-container {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: #ffffff;
+            text-align: left;
+            max-width: 50%;
+        }
+
+        .hero-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 51.2px;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtext {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 21.78px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                height: 56px;
+                padding: 0 16px;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .profile-btn img {
+                width: 28px;
+                height: 28px;
+            }
+
+            /* Mobile Hero Styles */
+            .hero-container {
+                height: auto;
+                padding: 8px;
+                /* Small gap for mobile */
+            }
+
+            .hero-wrapper {
+                width: 100%;
+            }
+
+            .hero-image {
+                height: clamp(300px, 40vw, 900px);
+                border-radius: 15px;
+            }
+
+            .hero-text-container {
+                left: 5%;
+                max-width: 90%;
+            }
+
+            .hero-text {
+                font-size: 32px;
+                line-height: 41px;
+            }
+
+            .hero-subtext {
+                font-size: 16px;
+                line-height: 19px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0 12px;
+            }
+
+            .dropdown-menu {
+                width: 180px;
+                right: -12px;
+            }
+
+            .hero-text {
+                font-size: 28px;
+                line-height: 36px;
+            }
+
+            .hero-subtext {
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="announcement-bar">
+        Escape Facebook Scams - book your farmhouse with trust and ease!!
+    </div>
+
+    <div class="navbar-container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="/api/placeholder/120/40" alt="Logo">
+            </div>
+
+            <div class="profile-section">
+                <button class="profile-btn" onclick="toggleDropdown()">
+                    <img src="/api/placeholder/32/32" alt="Profile">
+                </button>
+                <div class="dropdown-menu" id="profileDropdown">
+                    <a href="#">View Profile</a>
+                    <a href="#">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-container">
+        <div class="hero-wrapper">
+            <!-- <img src="https://images.pexels.com/photos/14024790/pexels-photo-14024790.jpeg" alt="Hero Image" class="hero-image"> -->
+            <!-- <img src="https://images.pexels.com/photos/1450360/pexels-photo-1450360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hero Image" class="hero-image"> -->
+            <img src="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="Hero Image" class="hero-image">
+            <div class="hero-text-container">
+                <div class="hero-text">
+                    Explore the World,<br>
+                    one journey at a time
+                </div>
+                <div class="hero-subtext">
+                    Discover new destinations, plan your perfect trip, and book a Farmhouse!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("profileDropdown");
+            dropdown.classList.toggle("active");
+        }
+
+        window.addEventListener("click", function (event) {
+            const dropdown = document.getElementById("profileDropdown");
+            const button = document.querySelector(".profile-btn");
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+            }
+        });
+    </script>
+</body>
+
+</html>

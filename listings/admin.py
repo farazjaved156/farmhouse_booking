@@ -5,13 +5,13 @@ from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile
 class FarmhouseAdmin(admin.ModelAdmin):
     list_display = ('id','name', 'city', 'owner', 'bedrooms', 'created_at','slug')
     list_filter = ('city', 'has_pool', 'has_wifi', 'has_air_conditioning')
-    # search_fields = ('name', 'city', 'description')
+    search_fields = ('name', 'city', 'description')
     prepopulated_fields = {'slug': ('name', 'city')}
 
 @admin.register(FarmhouseImage)
 class FarmhouseImageAdmin(admin.ModelAdmin):
     list_display = ('id','farmhouse', 'is_primary', 'uploaded_at')
-    list_filter = ('is_primary', 'uploaded_at')
+    # list_filter = ('is_primary', 'uploaded_at')
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):

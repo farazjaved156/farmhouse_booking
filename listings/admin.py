@@ -18,7 +18,7 @@ class BookingAdmin(admin.ModelAdmin):
     list_display = ('id','booking_number', 'farmhouse', 'guest', 'status')
     # list_filter = ('status',)
     search_fields = ('booking_number', 'guest__username', 'farmhouse__name')
-
+#Open to work
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('id','farmhouse', 'reviewer', 'rating', 'created_at')

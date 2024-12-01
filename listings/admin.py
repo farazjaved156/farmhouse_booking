@@ -24,13 +24,13 @@ class BookingAdmin(admin.ModelAdmin):
     list_display = ('id','booking_number', 'farmhouse', 'guest', 'status')
     # list_filter = ('status',)
     search_fields = ('booking_number', 'guest__username', 'farmhouse__name')
-
+#Open to work
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('id','farmhouse', 'reviewer', 'rating', 'created_at')
-    # list_filter = ('rating', 'created_at')
+    list_filter = ('rating', 'created_at')
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('id','user', 'phone_number')
-    # search_fields = ('user__username', 'phone_number')
+    search_fields = ('user__username', 'phone_number')

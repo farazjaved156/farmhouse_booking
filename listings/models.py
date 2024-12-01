@@ -10,8 +10,6 @@ class Farmhouse(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='farmhouses')
     description = models.TextField()
     address = models.TextField()
-    day_shift_price = models.DecimalField(max_digits=10, decimal_places=2)
-    night_shift_price = models.DecimalField(max_digits=10, decimal_places=2)
     bedrooms = models.PositiveIntegerField()
     bathrooms = models.PositiveIntegerField()
     max_guests = models.PositiveIntegerField()
@@ -40,6 +38,40 @@ class Farmhouse(models.Model):
     class Meta:
         verbose_name_plural = "Farmhouses"
         ordering = ['-created_at']
+        
+class FarmhousePricing(models.Model):
+    MONTH_CHOICES = [
+        ('01', 'January'),
+        ('02', 'February'),
+        ('03', 'March'),
+        ('04', 'April'),
+        ('05', 'May'),
+        ('06', 'June'),
+        ('07', 'July'),
+        ('08', 'August'),
+        ('09', 'September'),
+        ('10', 'October'),
+        ('11', 'November'),
+        ('12', 'December')
+    ]
+
+    SHIFT_CHOICES = [
+        ('day', 'Day Shift (8 AM - 7 PM)'),
+        ('night', 'Night Shift (8 PM - 7 AM)')
+    ]
+
+    farmhouse = models.ForeignKey(Farmhouse, on_delete=models.CASCADE, related_name='pricing_options')
+    year = models.PositiveIntegerField()
+    month = models.CharField(max_length=2, choices=MONTH_CHOICES)
+    shift = models.CharField(max_length=5, choices=SHIFT_CHOICES)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    class Meta:
+        unique_together = ['farmhouse', 'year', 'month', 'shift']
+        verbose_name_plural = "Farmhouse Pricing Options"
+
+    def __str__(self):
+        return f"{self.farmhouse.name} - {self.get_month_display()} {self.year} {self.get_shift_display()} Price"
 
 class FarmhouseImage(models.Model):
     farmhouse = models.ForeignKey(Farmhouse, on_delete=models.CASCADE, related_name='images')

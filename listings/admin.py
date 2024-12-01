@@ -1,5 +1,5 @@
-# from django.contrib import admin
-from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile
+from django.contrib import admin
+from .models import Farmhouse, FarmhouseImage, Booking, Review, UserProfile, FarmhousePricing
 
 @admin.register(Farmhouse)
 class FarmhouseAdmin(admin.ModelAdmin):
@@ -7,6 +7,12 @@ class FarmhouseAdmin(admin.ModelAdmin):
     list_filter = ('city', 'has_pool', 'has_wifi', 'has_air_conditioning')
     search_fields = ('name', 'city', 'description')
     prepopulated_fields = {'slug': ('name', 'city')}
+    
+@admin.register(FarmhousePricing)
+class FarmhousePricingAdmin(admin.ModelAdmin):
+    list_display = ('id','farmhouse', 'year', 'month', 'shift', 'price',)
+    # prepopulated_fields = {'slug': ('name', 'city')}
+
 
 @admin.register(FarmhouseImage)
 class FarmhouseImageAdmin(admin.ModelAdmin):

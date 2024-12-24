@@ -1,7 +1,9 @@
-from django.db import models
+from django.db import models, transaction
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
+from datetime import date, timedelta
+from decimal import Decimal
 
 class Farmhouse(models.Model):
     name = models.CharField(max_length=200)
@@ -40,42 +42,50 @@ class Farmhouse(models.Model):
         ordering = ['-created_at']
         
 class FarmhousePricing(models.Model):
-    MONTH_CHOICES = [
-        ('01', 'January'),
-        ('02', 'February'),
-        ('03', 'March'),
-        ('04', 'April'),
-        ('05', 'May'),
-        ('06', 'June'),
-        ('07', 'July'),
-        ('08', 'August'),
-        ('09', 'September'),
-        ('10', 'October'),
-        ('11', 'November'),
-        ('12', 'December')
-    ]
-
     SHIFT_CHOICES = [
         ('day', 'Day Shift (8 AM - 7 PM)'),
         ('night', 'Night Shift (8 PM - 7 AM)')
     ]
 
-    farmhouse = models.ForeignKey(Farmhouse, on_delete=models.CASCADE, related_name='pricing_options')
-    year = models.PositiveIntegerField()
-    month = models.CharField(max_length=2, choices=MONTH_CHOICES)
+    farmhouse = models.ForeignKey(
+        'Farmhouse', on_delete=models.CASCADE, related_name='pricing_options'
+    )
+    date = models.DateField()
     shift = models.CharField(max_length=5, choices=SHIFT_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    
+
     class Meta:
-        unique_together = ['farmhouse', 'year', 'month', 'shift']
+        unique_together = ['farmhouse', 'date', 'shift']
         verbose_name_plural = "Farmhouse Pricing Options"
 
     def __str__(self):
-        return f"{self.farmhouse.name} - {self.get_month_display()} {self.year} {self.get_shift_display()} Price"
+        return f"{self.farmhouse.name} - {self.date} {self.get_shift_display()} Price"
+
+    @classmethod
+    def add_prices_for_next_four_months(cls, farmhouse, day_price, night_price):
+        start_date = date.today()
+        end_date = start_date + timedelta(days=120)  # Approx. 4 months
+
+        with transaction.atomic():  # Ensure atomicity
+            for single_date in (start_date + timedelta(days=i) for i in range((end_date - start_date).days)):
+                # Add day shift pricing
+                cls.objects.update_or_create(
+                    farmhouse=farmhouse,
+                    date=single_date,
+                    shift='day',
+                    defaults={'price': day_price}
+                )
+                # Add night shift pricing
+                cls.objects.update_or_create(
+                    farmhouse=farmhouse,
+                    date=single_date,
+                    shift='night',
+                    defaults={'price': night_price}
+                )
 
 class FarmhouseImage(models.Model):
     farmhouse = models.ForeignKey(Farmhouse, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='farmhouse_images/')
+    image = models.ImageField(upload_to='listings/static/images/')
     is_primary = models.BooleanField(default=False)
     caption = models.CharField(max_length=200, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -93,7 +103,7 @@ class Booking(models.Model):
         ('completed', 'Completed')
     ]
 
-    booking_number = models.CharField(max_length=15, unique=True, editable=False)
+    booking_number = models.CharField(max_length=35, unique=True, editable=False)
     farmhouse = models.ForeignKey(Farmhouse, on_delete=models.CASCADE, related_name='bookings')
     guest = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')
     booking_date = models.DateField()
@@ -108,8 +118,8 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.booking_number} - {self.guest.username}'s {self.shift} booking at {self.farmhouse.name}"
 
-    # class Meta:
-    #     unique_together = ['farmhouse', 'booking_date', 'shift']
+    class Meta:
+        unique_together = ['farmhouse', 'booking_date', 'shift']
 
 class Review(models.Model):
     farmhouse = models.ForeignKey(Farmhouse, on_delete=models.CASCADE, related_name='reviews')

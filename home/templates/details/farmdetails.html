@@ -8,6 +8,98 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
+        /* Announcement bar styling */
+        .announcement-bar {
+            background: linear-gradient(90deg, #5124D2 0%, #673EE5 100%);
+            color: #fff;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 40px;
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 80px;
+            transition: height 0.3s ease;
+        }
+
+        /* Profile dropdown button styling */
+        .profile-btn {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .profile-btn img {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+        }
+
+        /* Dropdown menu styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 20%;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            z-index: 1;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: #ddd;
+            margin: 5px 0;
+        }
+
+        /* Responsive adjustments for logo */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo img {
+                /* height: 70px; */
+                height: 50px;
+            }
+        }
+    </style>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -93,6 +185,7 @@
 
         /* Right Section */
         .schedule-section {
+            margin-top: 3rem;
             flex: 1;
             background-color: #f8f7ff;
             padding: 1rem;
@@ -305,7 +398,6 @@
             padding: 2rem;
             /* Added same padding as left side */
             padding-right: 15rem;
-            ;
         }
 
         .price-label {
@@ -327,6 +419,31 @@
 </head>
 
 <body>
+    <!-- Announcement Bar -->
+<div class="announcement-bar">
+    Escape Facebook Scams - book your farmhouse with trust and ease!!
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+    <!-- Left side logo -->
+    <div class="logo">
+        <img src="logo13.png" alt="Logo"> <!-- Replace with your logo source -->
+    </div>
+
+    <!-- Right side profile dropdown button -->
+    <div>
+        <button class="profile-btn" onclick="toggleDropdown()">
+            <img src="profile-icon.png" alt="Profile"> <!-- Replace with your profile icon source -->
+        </button>
+        <div class="dropdown-menu" id="profileDropdown">
+            <a href="#">View Profile</a>
+            <a href="#">Settings</a>
+            <div class="dropdown-divider"></div>
+            <a href="#">Logout</a>
+        </div>
+    </div>
+</div>
     <div class="container">
         <!-- Left Section -->
         <div class="content-section">

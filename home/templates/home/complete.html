@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,14 +98,15 @@
             }
         }
 
-                /* Grid container for multiple cards */
-                .card-container {
+        /* Grid container for multiple cards */
+        .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexible columns */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            /* Flexible columns */
             gap: 20px;
             padding: 20px;
         }
-
+        
         /* Card styling */
         .farmhouse-card {
             background: #FFFFFF;
@@ -115,6 +117,7 @@
             display: flex;
             flex-direction: column;
             height: auto;
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
         }
 
         /* Farmhouse image */
@@ -185,7 +188,8 @@
 
         /* Divider line */
         .divider {
-            width: 100%; /* Spans full width */
+            width: 100%;
+            /* Spans full width */
             height: 1px;
             background-color: #ddd;
             margin: 0.5rem 0;
@@ -201,11 +205,13 @@
         /* Price styling */
         .price {
             font-family: 'Poppins', sans-serif;
-            font-size: 15px; /* Increased font size */
+            font-size: 15px;
+            /* Increased font size */
             font-weight: 600;
             line-height: 24px;
             color: #000;
         }
+
         .price span {
             font-weight: 400;
         }
@@ -235,369 +241,517 @@
         /* Adjust number of columns at different screen sizes */
         @media (min-width: 1880px) {
             .card-container {
-                grid-template-columns: repeat(6, 1fr); /* 6 cards for very large screens */
-                padding: 25px; /* Less padding for medium screens */
+                grid-template-columns: repeat(6, 1fr);
+                /* 6 cards for very large screens */
+                padding: 25px;
+                /* Less padding for medium screens */
             }
         }
 
         @media (max-width: 1600px) {
             .card-container {
-                grid-template-columns: repeat(4, 1fr); /* 4 cards for large screens */
+                grid-template-columns: repeat(4, 1fr);
+                /* 4 cards for large screens */
             }
         }
 
         @media (max-width: 1250px) {
             .card-container {
-                grid-template-columns: repeat(3, 1fr); /* 3 cards for medium laptops */
-                padding: 12px; /* Less padding for medium screens */
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 cards for medium laptops */
+                padding: 12px;
+                /* Less padding for medium screens */
             }
         }
 
         @media (max-width: 992px) {
             .card-container {
-                grid-template-columns: repeat(2, 1fr); /* 2 cards for tablets */
-                padding: 10px; /* Less padding for smaller screens */
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 cards for tablets */
+                padding: 10px;
+                /* Less padding for smaller screens */
             }
         }
 
         @media (max-width: 576px) {
             .card-container {
-                grid-template-columns: 1fr; /* 1 card for mobile devices */
-                padding: 5px; /* Remove padding on mobile for full-width view */
+                grid-template-columns: 1fr;
+                /* 1 card for mobile devices */
+                padding: 5px;
+                margin: 5px 5px 5px 5px;
+
+                /* Remove padding on mobile for full-width view */
+                .farmhouse-card img {
+                    height: 300px;
+                    /* Increase height for mobile */
+                    /* width: 100%; */
+                    /* Slightly reduce the width for mobile */
+                    /* object-fit: cover; */
+                    /* Ensure the image covers the area proportionally */
+                    /* margin: 1px 1px 1px 1px; */
+                    
+                }
             }
         }
     </style>
 </head>
+
 <body>
 
-<!-- Announcement Bar -->
-<div class="announcement-bar">
-    Escape Facebook Scams - book your farmhouse with trust and ease!!
-</div>
-
-<!-- Navbar -->
-<div class="navbar">
-    <!-- Left side logo -->
-    <div class="logo">
-        <img src="logo13.png" alt="Logo"> <!-- Replace with your logo source -->
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        Escape Facebook Scams - book your farmhouse with trust and ease!!
     </div>
 
-    <!-- Right side profile dropdown button -->
-    <div>
-        <button class="profile-btn" onclick="toggleDropdown()">
-            <img src="profile-icon.png" alt="Profile"> <!-- Replace with your profile icon source -->
-        </button>
-        <div class="dropdown-menu" id="profileDropdown">
-            <a href="#">View Profile</a>
-            <a href="#">Settings</a>
-            <div class="dropdown-divider"></div>
-            <a href="#">Logout</a>
+    <!-- Navbar -->
+    <div class="navbar">
+        <!-- Left side logo -->
+        <div class="logo">
+            <img src="logo13.png" alt="Logo"> <!-- Replace with your logo source -->
         </div>
-    </div>
-</div>
 
-<div class="card-container">
-    <!-- Multiple cards -->
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEyOTQ2NzE3NDMyMjU2NzQxNg%3D%3D/original/a5cf3db8-ff1c-4454-b125-1b2460196098.jpeg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs.24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1208478853883571250/original/03aef6b8-3992-463d-94ca-2422c2d82757.jpeg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-53371625/original/b230521e-d33c-4c5e-a2ba-d1d5277ade92.jpeg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs.24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1193517917066947905/original/d0d0a24b-097b-4a28-bb67-a2018517463f.jpeg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/cba06c3e-f0e0-4ef0-b991-aa6fd2348c50.jpg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1246856468814586052/original/535d1cf0-6609-4b80-a969-9a945e935a71.jpeg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-983628068535189241/original/6fb13419-22cb-4378-bacc-22fa484869e2.jpeg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1051945180134067169/original/87620dc5-4c43-44a2-a426-30b0fa18ed8d.jpeg?im_w=720" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="farm1.png" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="farm1.png" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="farm1.png" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
-            </div>
-        </div>
-    </div>
-    <div class="farmhouse-card">
-        <img src="farm1.png" alt="Farmhouse Image">
-        <div class="card-content">
-            <div class="farmhouse-name">
-                Farmhouse Name
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="farmhouse-location">
-                <i class="fas fa-map-marker-alt"></i>
-                Farmhouse Location
-            </div>
-            <div class="amenities">
-                <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
-                <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
-                <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
-            </div>
-            <div class="divider"></div>
-            <div class="price-booking">
-                <div class="price">Rs 24,500/<span>12 hours</span></div>
-                <button class="book-now-btn">Book Now</button>
+        <!-- Right side profile dropdown button -->
+        <div>
+            <button class="profile-btn" onclick="toggleDropdown()">
+                <img src="profile-icon.png" alt="Profile"> <!-- Replace with your profile icon source -->
+            </button>
+            <div class="dropdown-menu" id="profileDropdown">
+                <a href="#">View Profile</a>
+                <a href="#">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a href="#">Logout</a>
             </div>
         </div>
     </div>
 
-    <!-- Repeat the card structure for additional cards -->
-    <div class="farmhouse-card"> <!-- Card 2 --></div>
-    <div class="farmhouse-card"> <!-- Card 3 --></div>
-    <div class="farmhouse-card"> <!-- Card 4 --></div>
-    <div class="farmhouse-card"> <!-- Card 5 --></div>
-</div>
+    <div class="card-container">
+        <!-- Multiple cards -->
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEyOTQ2NzE3NDMyMjU2NzQxNg%3D%3D/original/a5cf3db8-ff1c-4454-b125-1b2460196098.jpeg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs.24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1208478853883571250/original/03aef6b8-3992-463d-94ca-2422c2d82757.jpeg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-53371625/original/b230521e-d33c-4c5e-a2ba-d1d5277ade92.jpeg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs.24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1193517917066947905/original/d0d0a24b-097b-4a28-bb67-a2018517463f.jpeg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/cba06c3e-f0e0-4ef0-b991-aa6fd2348c50.jpg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1246856468814586052/original/535d1cf0-6609-4b80-a969-9a945e935a71.jpeg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-983628068535189241/original/6fb13419-22cb-4378-bacc-22fa484869e2.jpeg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1051945180134067169/original/87620dc5-4c43-44a2-a426-30b0fa18ed8d.jpeg?im_w=720"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI3MzY4MjIyMDMxODIxNjY2OA%3D%3D/original/ca768e20-b790-4ea3-9545-d065c139be96.jpeg?im_w=1200&im_format=avif"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1267811704786427087/original/755db56d-8d5b-4d6a-8fd8-c681404d9927.jpeg?im_w=1440&im_format=avif"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/4118575f-38d9-4825-ba90-79b9dc03452d.jpg?im_w=1440&im_format=avif"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="farmhouse-card">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1122281947082475682/original/14d43db6-5e4c-4304-b67b-788b780826b6.jpeg?im_w=1440&im_format=avif"
+                alt="Farmhouse Image">
+            <div class="card-content">
+                <div class="farmhouse-name">
+                    Farmhouse Name
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="farmhouse-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Farmhouse Location
+                </div>
+                <div class="amenities">
+                    <div><i class="fas fa-bed fa-icon"></i> 3 Rooms</div>
+                    <div><i class="fas fa-user fa-icon"></i> 6 Persons</div>
+                    <div><i class="fas fa-bath fa-icon"></i> 2 Bathrooms</div>
+                </div>
+                <div class="divider"></div>
+                <div class="price-booking">
+                    <div class="price">Rs 24,500/<span>12 hours</span></div>
+                    <button class="book-now-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
 
-<script>
-    // Toggle dropdown menu visibility
-    function toggleDropdown() {
-        const dropdown = document.getElementById("profileDropdown");
-        dropdown.classList.toggle("active");
-    }
+        <!-- Repeat the card structure for additional cards -->
+        <div class="farmhouse-card"> <!-- Card 2 --></div>
+        <div class="farmhouse-card"> <!-- Card 3 --></div>
+        <div class="farmhouse-card"> <!-- Card 4 --></div>
+        <div class="farmhouse-card"> <!-- Card 5 --></div>
+    </div>
 
-    // Close dropdown if clicked outside
-    window.addEventListener("click", function(event) {
-        const dropdown = document.getElementById("profileDropdown");
-        const button = document.querySelector(".profile-btn");
-        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
-            dropdown.classList.remove("active");
+    <!-- Footer Bar -->
+    <div class="footer-bar">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="logo13.png" alt="Logo"> <!-- Replace with your logo source -->
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
+    </div>
+
+    <style>
+        /* Footer Bar Styling */
+        .footer-bar {
+            background-color: #5124D2;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
         }
-    });
-</script>
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links li {
+            display: inline;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #F2C010;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #F2C010;
+        }
+
+        .footer-bottom {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links ul {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .footer-socials {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+
+
+    <script>
+        // Toggle dropdown menu visibility
+        function toggleDropdown() {
+            const dropdown = document.getElementById("profileDropdown");
+            dropdown.classList.toggle("active");
+        }
+
+        // Close dropdown if clicked outside
+        window.addEventListener("click", function (event) {
+            const dropdown = document.getElementById("profileDropdown");
+            const button = document.querySelector(".profile-btn");
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+            }
+        });
+    </script>
 
 </body>
+
 </html>
